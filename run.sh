@@ -15,7 +15,7 @@ if [ "$skip_build" == true ]; then
   echo "📦 Skipping Frontend Build..."
 else
   echo "📦 Building Frontend..."
-  cd frontend
+  cd web
   if [ -d "dist" ]; then
       rm -R dist
   fi

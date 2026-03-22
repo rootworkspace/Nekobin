@@ -60,7 +60,7 @@ async def get_paste(pid: str, password: str = None, db: Session = Depends(get_db
     return content
 
 # Frontend
-app.mount("/", StaticFiles(directory="frontend/dist", html=True), name="dist")
+app.mount("/", StaticFiles(directory="web/dist", html=True), name="dist")
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
