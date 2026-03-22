@@ -187,7 +187,8 @@ function App() {
                     {window.location.origin}/#{pasteId}
                   </p>
                   <Button size="sm" onClick={() => copyToClipboard(`${window.location.origin}/#${pasteId}`)} className="shrink-0">
-                    {copied ? <Check className="h-4 w-4" /> : <Clipboard className="h-4 w-4" />}
+                    {copied ? <Check className="h-4 w-4 mr-2" /> : <Clipboard className="h-4 w-4 mr-2" />}
+                    {copied ? "Copied" : "Copy"}
                   </Button>
                 </div>
               )}
@@ -241,8 +242,9 @@ function App() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center px-1">
                     <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Content</span>
-                    <Button size="sm" onClick={() => copyToClipboard(viewContent)} className="shrink-0">
-                      {copied ? <Check className="h-4 w-4" /> : <Clipboard className="h-4 w-4" />}
+                    <Button size="sm" onClick={() => copyToClipboard(viewContent)} className="h-8 px-3">
+                      {copied ? <Check className="h-4 w-4 mr-2" /> : <Clipboard className="h-4 w-4 mr-2" />}
+                      {copied ? "Copied" : "Copy"}
                     </Button>
                   </div>
                   <pre className="p-6 bg-zinc-950 border border-zinc-800 rounded-lg overflow-x-auto font-mono text-sm leading-relaxed whitespace-pre-wrap">
