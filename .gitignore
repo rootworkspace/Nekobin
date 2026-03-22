@@ -1,3 +1,11 @@
+# Compiled frontend
+dist/
+
+# Database
+nekobin.db
+nekobin.db-shm
+nekobin.db-wal
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
