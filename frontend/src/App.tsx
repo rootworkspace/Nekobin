@@ -89,9 +89,8 @@ function App() {
     }
   };
 
-  const copyToClipboard = () => {
-    const shareUrl = `${window.location.origin}/#${pasteId}`;
-    navigator.clipboard.writeText(shareUrl);
+  const copyToClipboard = (content: string) => {
+    navigator.clipboard.writeText(content);
 
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -178,7 +177,7 @@ function App() {
                   <p className="text-sm font-medium text-zinc-100 truncate mr-4">
                     {window.location.origin}/#{pasteId}
                   </p>
-                  <Button size="sm" onClick={copyToClipboard} className="shrink-0">
+                  <Button size="sm" onClick={() => copyToClipboard(`${window.location.origin}/#${pasteId}`)} className="shrink-0">
                     {copied ? <Check className="h-4 w-4" /> : <Clipboard className="h-4 w-4" />}
                   </Button>
                 </div>
@@ -233,8 +232,8 @@ function App() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center px-1">
                     <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Content</span>
-                    <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(viewContent)}>
-                      Copy
+                    <Button size="sm" onClick={() => copyToClipboard(viewContent)} className="shrink-0">
+                      {copied ? <Check className="h-4 w-4" /> : <Clipboard className="h-4 w-4" />}
                     </Button>
                   </div>
                   <pre className="p-6 bg-zinc-950 border border-zinc-800 rounded-lg overflow-x-auto font-mono text-sm leading-relaxed whitespace-pre-wrap">
