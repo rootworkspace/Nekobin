@@ -16,7 +16,9 @@ if [ "$skip_build" == true ]; then
 else
   echo "📦 Building Frontend..."
   cd frontend
-  rm -R dist
+  if [ -d "dist" ]; then
+      rm -R dist
+  fi
   npm run build
   cd ..
 fi
