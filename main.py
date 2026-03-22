@@ -9,7 +9,7 @@ from sqlalchemy import create_engine, String, Text, DateTime, Boolean, event
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker, Session
 import os
 
-engine = create_engine("sqlite:///./nekobin.db", connect_args={"check_same_thread": False})
+engine = create_engine("sqlite:///./database/nekobin.db", connect_args={"check_same_thread": False})
 
 # Database
 @event.listens_for(engine, "connect")
@@ -60,7 +60,7 @@ async def get_paste(pid: str, password: str = None, db: Session = Depends(get_db
     return content
 
 # Frontend
-app.mount("/", StaticFiles(directory="dist", html=True), name="dist")
+app.mount("/", StaticFiles(directory="frontend/dist", html=True), name="dist")
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

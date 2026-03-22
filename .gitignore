@@ -2,9 +2,9 @@
 dist/
 
 # Database
-nekobin.db
-nekobin.db-shm
-nekobin.db-wal
+database/nekobin.db
+database/nekobin.db-shm
+database/nekobin.db-wal
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
