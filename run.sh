@@ -19,6 +19,7 @@ else
   if [ -d "dist" ]; then
       rm -R dist
   fi
+  npm install
   npm run build
   cd ..
 fi
