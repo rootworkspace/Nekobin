@@ -8,7 +8,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, String, Text, DateTime, Boolean, event
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker, Session
 import os
+from pathlib import Path
 
+Path("database").mkdir(parents=True, exist_ok=True)
 engine = create_engine("sqlite:///./database/nekobin.db", connect_args={"check_same_thread": False})
 
 # Database
