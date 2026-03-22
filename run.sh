@@ -11,6 +11,13 @@ for arg in "$@"; do
   fi
 done
 
+# Install dependencies
+echo "📦 Installing Dependencies..."
+pip install -r requirements.txt
+cd web
+npm install
+cd ..
+
 if [ "$skip_build" == true ]; then
   echo "📦 Skipping Frontend Build..."
 else
@@ -19,7 +26,6 @@ else
   if [ -d "dist" ]; then
       rm -R dist
   fi
-  npm install
   npm run build
   cd ..
 fi
