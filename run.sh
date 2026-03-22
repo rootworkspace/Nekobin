@@ -4,19 +4,26 @@
 set -e
 
 skip_build=false
+skip_dependencies=false
 
 for arg in "$@"; do
   if [ "$arg" == "--skip-build" ]; then
     skip_build=true
+  elif [ "$arg" == "--skip-dependencies" ]; then
+    skip_dependencies=true
   fi
 done
 
 # Install dependencies
-echo "📦 Installing Dependencies..."
-pip install -r requirements.txt
-cd web
-npm install
-cd ..
+if [ "$skip_dependencies" == true ]; then
+  echo "📦 Skipping Dependency Installation..."
+else
+  echo "📦 Installing Dependencies..."
+  pip install -r requirements.txt
+  cd web
+  npm install
+  cd ..
+fi
 
 if [ "$skip_build" == true ]; then
   echo "📦 Skipping Frontend Build..."
