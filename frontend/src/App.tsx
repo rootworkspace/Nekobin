@@ -20,14 +20,23 @@ function App() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash) {
+    /* Change the view instead of having to reload the page */
+    const syncHash = () => {
+      const hash = window.location.hash.replace("#", "");
       setViewId(hash);
-      fetchPaste(hash).finally(() => setIsInitialLoading(false));
-    } else {
+      if (hash) {
+        fetchPaste(hash);
+      } else {
+        setViewContent("");
+        setIsNotFound(false);
+      }
       setIsInitialLoading(false);
-    }
+    };
 
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+
+    return () => window.removeEventListener("hashchange", syncHash);
   }, []);
 
   useEffect(() => {
